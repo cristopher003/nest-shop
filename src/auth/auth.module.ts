@@ -13,7 +13,8 @@ import { JwtStrategy } from './strategies/jwt.strategy';
   providers: [AuthService,JwtStrategy],
 
   // para persitir el modelo de la base de datos
-  imports:[TypeOrmModule.forFeature([User]),
+  imports:[ConfigModule,
+    TypeOrmModule.forFeature([User]),
 
   // npm install --save-dev @types/passport-jwt
   // npm install --save @nestjs/passport passport
@@ -24,7 +25,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
   // JwtModule.register({secret:process.env.JWT_SECRET,signOptions:{expiresIn:'2h'}})
 
   JwtModule.registerAsync({
-    imports:[ConfigModule,ConfigModule],
+    imports:[ConfigModule],
     inject:[ConfigService],
     useFactory:(configService:ConfigService)=>
       { return {

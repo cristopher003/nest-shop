@@ -19,14 +19,14 @@ export class User{
     @Column('bool',{default:true})
     isActive:string;
 
-    @Column('text',{array:true,default:"user"})
+    @Column('text',{array:true,default:["user"]})
     roles:string[];
 
     @OneToMany(
         ()=>Product,
         (product)=>product.user,
-        {eager:true}
+        // {eager:true}
       )
-      product?:Product;
+      product:Product;
   
 }
